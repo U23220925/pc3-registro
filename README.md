@@ -1,7 +1,7 @@
 # Módulo de Registro - Angular CI/CD (PC3)
 
-- **URL Desplegada:** https://github.io
-- **Flujo CI/CD:** Al hacer `push` o `pull_request` hacia `main`, GitHub Actions instala dependencias (`npm ci`), ejecuta las pruebas unitarias con Vitest (`npm test -- --watch=false`) y compila la aplicación (`npm run build`). Si alguna prueba falla, el pipeline se detiene y bloquea el job `deploy` hacia GitHub Pages.
+- **URL Desplegada:** https://github.com/U23220925/pc3-registro
+- **Flujo CI/CD:** Al realizar `push` o `pull_request` hacia `main`, GitHub Actions instala dependencias (`npm ci`), ejecuta las pruebas unitarias con Vitest (`npm test -- --watch=false`) y compila la aplicación (`npm run build`). Si alguna prueba falla, el pipeline se detiene y bloquea el despliegue. El job `deploy` publica automáticamente en GitHub Pages solo cuando ocurre un `push` aprobado en `main`.
 
 ## Development server
 
