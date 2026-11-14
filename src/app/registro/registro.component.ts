@@ -14,7 +14,7 @@ export class RegistroComponent {
   form = this.fb.nonNullable.group({
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    edad: [0, [Validators.required, Validators.min(18)]],
+    edad: [0, [Validators.required, Validators.min(10)]],
   });
 
   onSubmit() {
