@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="nombre" placeholder="Nombre" />
+  @if (form.controls.nombre.touched && form.controls.nombre.errors) { <small>Nombre requerido (mín. 3)</small> }
+
+  <input formControlName="email" placeholder="Email" />
+  @if (form.controls.email.touched && form.controls.email.errors) { <small>Email inválido</small> }
+
+  <input type="number" formControlName="edad" placeholder="Edad" />
+  @if (form.controls.edad.touched && form.controls.edad.errors) { <small>Debe ser mayor de 18</small> }
+
+  <button type="submit" [disabled]="form.invalid">Registrar</button>
+  @if (enviado) { <p>Registro exitoso</p> }
+</form>
