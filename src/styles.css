@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  margin: 0;
+}
+
+form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input {
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+small {
+  color: #d93025;
+  font-size: 0.85rem;
+}
+
+button {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+p {
+  color: #188038;
+  font-weight: 600;
+  text-align: center;
+}
+
