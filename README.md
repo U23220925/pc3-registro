@@ -1,60 +1,13 @@
 # Módulo de Registro - Angular CI/CD (PC3)
 
-- **URL Desplegada:** https://github.com/U23220925/pc3-registro     /    https://github.com/U23220925/pc3-registro/deployments/github-pages
-- **Flujo CI/CD:** Al realizar `push` o `pull_request` hacia `main`, GitHub Actions instala dependencias (`npm ci`), ejecuta las pruebas unitarias con Vitest (`npm test -- --watch=false`) y compila la aplicación (`npm run build`). Si alguna prueba falla, el pipeline se detiene y bloquea el despliegue. El job `deploy` publica automáticamente en GitHub Pages solo cuando ocurre un `push` aprobado en `main`.
+- **URL Desplegada:** https://u23220925.github.io/pc3-registro/registro
+- **Integrantes:** Nicolas (`U23220925`), Alexander (`Alexander08S-C`), Herbert (`herbertmorales1990-barbonautas`)
 
-## Development server
+## Flujo CI/CD en GitHub Actions
+- **Integración Continua (`ci`):** Se ejecuta en cada `push` y `pull_request` hacia `main`. Instala dependencias (`npm ci`), corre las 8 pruebas unitarias con Vitest (`npm test -- --watch=false`) y compila la aplicación en producción (`npm run build`). Si alguna prueba falla, el pipeline se detiene y bloquea el despliegue.
+- **Entrega Continua (`deploy`):** Depende de `ci` (`needs: ci`) y solo se ejecuta cuando el evento es un `push` directo a `main` (`if: github.event_name == 'push' && github.ref == 'refs/heads/main'`), evitando que un Pull Request publique cambios en producción. La autenticación hacia GitHub Pages se realiza de forma segura mediante `GITHUB_TOKEN` / OIDC (`id-token: write`).
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Detalles de Compilación y Despliegue
+- **Directorio publicado:** `dist/pc3-registro/browser`
+- **Archivos generados:** `index.html`, `main-*.js`, `styles-*.css`, `404.html` (para soporte de rutas SPA al recargar `/registro`) y `favicon.ico`.
+- **¿Por qué no se publica el código fuente (`src/`)?** Porque los navegadores no interpretan TypeScript ni plantillas de Angular; el proceso de `build` compila, optimiza y minifica el código a JavaScript estándar, evitando además exponer dependencias (`node_modules`), archivos de prueba (`.spec.ts`) o configuraciones internas.
