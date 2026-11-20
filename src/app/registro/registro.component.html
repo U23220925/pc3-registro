@@ -8,6 +8,6 @@
   <input type="number" formControlName="edad" placeholder="Edad" />
   @if (form.controls.edad.touched && form.controls.edad.errors) { <small>Debe ser mayor de 18</small> }
 
-  <button type="submit" [disabled]="form.invalid">Registrar</button>
+  <button type="submit" [disabled]="form.invalid">Registrar cuenta</button>
   @if (enviado) { <p>Registro exitoso</p> }
 </form>
